@@ -5,7 +5,7 @@ Tech stack - NodeJS
 
 ## API Reference
 
-#### Get all items
+#### Get all orders
 
 ```
   GET /
@@ -14,41 +14,114 @@ Tech stack - NodeJS
 Returns all the orders placed
 
 ```
+Response :
 {
     "maxCapacity": 1000,
     "data": [
         {
-            "qty": 11,
-            "id": "7317426c-8818-4d27-aed3-d82df6a4da20",
+            "id": "e4ed65c4-7608-4be6-869c-7546bb45519d",
+            "name": "Ankeeta Sahoo",
+            "email": "sahooankeeta@gmail.com",
+            "address": "142,M G Road",
+            "qty": 7,
             "date": "15-8-2022",
-            "status": "delivered"
-        },
-        {
-            "qty": 1,
-            "id": "1a335174-7aa6-4fcb-828c-5cc57bfac7fd",
-            "date": "14-8-2022",
             "status": "placed"
         }
     ]
 }
 ```
 
-#### Get all items
+#### Create a new order
 
 ```
   POST /add
 ```
 
 Places a new order
+```
+Body :
+{
+    "name":"Ankeeta Sahoo",
+    "email":"sahooankeeta@gmail.com",
+    "address":"142,M G Road",
+    "qty":7
+}
+```
 
 ```
+Response :
 {
     "order": {
-        "qty": 1,
-        "id": "26f9408b-3371-4b67-91d3-81601685648a",
-        "date": "14-8-2022",
+        "id": "e4ed65c4-7608-4be6-869c-7546bb45519d",
+        "name": "Ankeeta Sahoo",
+        "email": "sahooankeeta@gmail.com",
+        "address": "142,M G Road",
+        "qty": 7,
+        "date": "15-8-2022",
         "status": "placed"
     },
     "message": "order placed"
 }
 ```
+#### Update order
+
+```
+  PATCH /update/:id
+```
+```
+Body :
+{
+    "name":"Ankeeta Sahoo",
+    "email":"sahooankeeta@gmail.com",
+    "address":"142,M G Road",
+    "qty":11
+}
+```
+
+```
+Response :
+{
+    "order": {
+        "id": "e4ed65c4-7608-4be6-869c-7546bb45519d",
+        "name": "Ankeeta Sahoo",
+        "email": "sahooankeeta@gmail.com",
+        "address": "14/A,M G Road",
+        "qty": 11,
+        "date": "15-8-2022",
+        "status": "placed"
+    },
+    "message": "success in updating order"
+}
+```
+#### Update order status
+
+```
+  PATCH /updateStatus/:id
+```
+Updates the order status {placed,packed,dispatched,delivered}
+```
+Response :
+order status updated
+```
+#### Delete order
+
+```
+  DELETE /delete/:id
+```
+```
+Response :
+success in deleting your order
+```
+#### Check capacity
+Checks capacity of milk left for the given date
+
+```
+  GET /checkCapacity/:date
+```
+```
+Response :
+{
+    "quantity of milk left": 989
+}
+```
+
