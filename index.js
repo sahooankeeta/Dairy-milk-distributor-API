@@ -10,6 +10,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const routes = require("./routes");
 app.use("/", routes);
 //start server
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log("listeniing at port:3000");
 });
