@@ -29,13 +29,17 @@ module.exports.getAllOrders = (req, res) => {
   res.send(JSON.parse(jsonData));
 };
 module.exports.addOrder = (req, res) => {
+  const { name, email, address, qty } = req.body;
   const d = new Date();
   const data = getData();
   const date = `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`;
   const left = quanityLeft(date);
   const order = {
-    qty: req.body.qty,
     id: uuidv4(),
+    name,
+    email,
+    address,
+    qty: req.body.qty,
     date,
     status: "placed",
   };
@@ -49,7 +53,7 @@ module.exports.addOrder = (req, res) => {
     );
 };
 module.exports.updateOrder = (req, res) => {
-  const { qty } = req.body;
+  const { name, email, address, qty } = req.body;
   const id = req.params.id;
   const data = getData();
   let order;
@@ -58,6 +62,9 @@ module.exports.updateOrder = (req, res) => {
       const left = quanityLeft(item.date) + item.qty;
       if (qty <= left) {
         item.qty = qty;
+        item.name = name;
+        item.email = email;
+        item.address = address;
         order = item;
       } else
         res.send(

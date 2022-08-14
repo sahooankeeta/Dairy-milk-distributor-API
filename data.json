@@ -1,17 +1,1 @@
-{
-  "maxCapacity": 1000,
-  "data": [
-    {
-      "qty": 11,
-      "id": "7317426c-8818-4d27-aed3-d82df6a4da20",
-      "date": "15-8-2022",
-      "status": "delivered"
-    },
-    {
-      "qty": 1,
-      "id": "1a335174-7aa6-4fcb-828c-5cc57bfac7fd",
-      "date": "14-8-2022",
-      "status": "placed"
-    }
-  ]
-}
+{"maxCapacity":1000,"data":[{"id":"e4ed65c4-7608-4be6-869c-7546bb45519d","name":"Ankeeta Sahoo","email":"sahooankeeta@gmail.com","address":"14/A,M G Road","qty":10,"date":"15-8-2022","status":"placed"}]}
